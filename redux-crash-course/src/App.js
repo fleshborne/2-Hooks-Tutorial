@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Provider } from 'react-redux';
-
+import StickyFooter from 'react-sticky-footer';
 import Posts from './components/Posts';
 import PostForm from './components/PostForm';
 
@@ -30,11 +30,22 @@ function App() {
           <img src={logo} className='App-logo' alt='logo' />
           <PostForm />
           <Posts />
-          <footer>
-            Wow you've scrolled this: {Math.round(scrollDepth)}, far!
-          </footer>
         </header>
       </div>
+      <footer></footer>
+      <StickyFooter
+        bottomThreshold={50}
+        normalStyles={{
+          backgroundColor: '#999999',
+          padding: '2rem',
+        }}
+        stickyStyles={{
+          backgroundColor: 'rgba(255,255,255,.8)',
+          padding: '2rem',
+        }}
+      >
+        Wow you've scrolled this: {Math.round(scrollDepth)}, far!
+      </StickyFooter>
     </Provider>
   );
 }
